@@ -18,7 +18,6 @@ export default function RegisterScreen() {
       return;
     }
   
-
     if (password !== repeatPassword) {
       Alert.alert('Error', 'Passwords do not match');
       return;
@@ -29,15 +28,13 @@ export default function RegisterScreen() {
       await registerUser(email, password);
       Alert.alert("Account has been created");
 
-      /// 
+
       router.replace("/screens/LoginScreen")
     } catch (error) {
       Alert.alert("Error");
     } 
 
   };
-
-
 
 
     return(

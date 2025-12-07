@@ -1,28 +1,33 @@
 // import { router } from "expo-router";
-import { Link } from "expo-router";
-import { Button, View } from "react-native";
-
+import { router } from "expo-router";
+import React, { useEffect } from "react";
+import { ActivityIndicator, View } from "react-native";
+import { useAuthContext } from "./context/AuthContext";
 
 export default function Index() {
-  return (
-    <View
 
+  const { user, loading, isGuest } = useAuthContext();
+
+  useEffect( () => {
+    if(!loading) {
+      if(user || isGuest) {
+        router.replace("/screens/MainScreen");
+      } else {
+        router.replace("/screens/LoginScreen");  
+      }
+    }
+  }, [user, loading, isGuest]);
+
+  return (
+    
+    <View
       style={{
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-
-      <Link href="/screens/RegisterScreen" asChild>
-        <Button title ="Register" />
-      </Link>
-
-      <Link href="/screens/LoginScreen" asChild>
-        <Button title="Login" />
-      </Link>
-
-      
+      <ActivityIndicator size="large" color="#007AFF" />      
     </View>
   );
 }

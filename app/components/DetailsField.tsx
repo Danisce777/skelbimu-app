@@ -1,32 +1,29 @@
 import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 
-interface InputFieldProps {
-  placeholder: string;
-  value: string;
-  onChangeText: (text: string) => void;
-  secureTextEntry?: boolean;
+interface DetailsFieldProps {
+  placeholder: string,
+  value: any,
+  onChangeText: (text: string) => void,
   keyboardType?: TextInputProps['keyboardType'];
 }
 
-const InputField = ({
-  placeholder,
-  value,
-  onChangeText,
-  secureTextEntry,
-  keyboardType = 'default',
-}: InputFieldProps) => {
-  return (
-    <TextInput
-      style={styles.input}
-      placeholder={placeholder}
-      value={value}
-      onChangeText={onChangeText}
-      secureTextEntry={secureTextEntry}
-      keyboardType={keyboardType}
-      autoCapitalize="none"
-      placeholderTextColor="#666"
-    />
-  );
+const DetailsField = ({
+    placeholder,
+    value,
+    onChangeText,
+    keyboardType = 'default',
+}: DetailsFieldProps) => {
+    return (
+        <TextInput
+              style={styles.input}
+                placeholder={placeholder}
+                value={value}
+                onChangeText={onChangeText}
+                keyboardType={keyboardType}
+                autoCapitalize="none"
+                placeholderTextColor="#666"
+        />
+    );
 };
 
 const styles = StyleSheet.create({
@@ -60,4 +57,5 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
 });
-export default InputField;
+
+export default DetailsField;
